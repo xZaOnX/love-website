@@ -1,0 +1,112 @@
+.app {
+  min-height: 100vh;
+  position: relative;
+}
+
+.reset-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--rose-gold);
+  border: 2px solid var(--rose-gold);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 5px 20px rgba(183, 110, 121, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.reset-button:hover {
+  background: var(--rose-gold);
+  color: white;
+  box-shadow: 0 8px 30px rgba(183, 110, 121, 0.4);
+}
+
+.cards-container {
+  padding: 100px 20px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--rose-gold);
+  text-align: center;
+  margin-bottom: 50px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 1200px) {
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    padding: 80px 15px 40px;
+  }
+
+  .page-title {
+    margin-bottom: 30px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .reset-button {
+    top: 70px;
+    left: 10px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-container {
+    padding: 70px 10px 30px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+    padding: 5px;
+  }
+}
+
+/* Ensure smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection colors */
+::selection {
+  background: var(--soft-pink);
+  color: var(--dark-text);
+}
+
+::-moz-selection {
+  background: var(--soft-pink);
+  color: var(--dark-text);
+}
