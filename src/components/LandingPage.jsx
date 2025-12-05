@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import './LandingPage.css';
 
-const LandingPage = ({ onStart, herName = "Aşkım", yourName = "Senin Adın" }) => {
+const LandingPage = ({ onStart }) => {
   return (
     <div className="landing-page">
       <motion.div
@@ -23,14 +23,7 @@ const LandingPage = ({ onStart, herName = "Aşkım", yourName = "Senin Adın" })
           Nedeni
         </motion.h1>
 
-        <motion.p
-          className="subtitle"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          {herName} için, {yourName}'den ♥
-        </motion.p>
+
 
         <motion.div
           className="heart-container"
