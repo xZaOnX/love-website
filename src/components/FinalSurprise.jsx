@@ -103,9 +103,9 @@ const FinalSurprise = ({ isOpen, onClose }) => {
                 <p className="photo-text">Fotoğrafını buraya ekle ♥</p>
                 <p className="photo-hint">(src/components/FinalSurprise.jsx dosyasında)</p>
               </div>
-              {/* Uncomment and add image path:
-              <img src="/path-to-her-photo.jpg" alt="Love" className="photo-image" />
-              */}
+              { /* Uncomment and add image path: */
+              <img src="photo.jpg" alt="Love" className="photo-image" />
+              }
             </motion.div>
 
             <motion.button
