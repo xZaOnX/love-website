@@ -1,8 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import './FinalSurprise.css';
+import photo from '../photo.JPG';
 
-const FinalSurprise = ({ isOpen, onClose }) => {
+const FinalSurprise = ({ isOpen, onClose, onReset }) => {
   const [hearts, setHearts] = useState([]);
 
   useEffect(() => {
@@ -99,26 +100,38 @@ const FinalSurprise = ({ isOpen, onClose }) => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.6 }}
             >
-              <div className="photo-placeholder">
-                <p className="photo-text">Fotoğrafını buraya ekle ♥</p>
-                <p className="photo-hint">(src/components/FinalSurprise.jsx dosyasında)</p>
-              </div>
-              { /* Uncomment and add image path: */
-              <img src="photo.jpg" alt="Love" className="photo-image" />
-              }
+              <img src={photo} alt="Love" className="photo-image" />
+
             </motion.div>
 
-            <motion.button
-              className="close-button"
-              onClick={onClose}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              ♥
-            </motion.button>
+            <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+              <motion.button
+                className="close-button"
+                onClick={onReset}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                title="Sıfırla"
+                style={{ background: 'linear-gradient(135deg, #ff4d4d 0%, #cc0000 100%)' }}
+              >
+                ↻
+              </motion.button>
+
+              <motion.button
+                className="close-button"
+                onClick={onClose}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2.2 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                title="Kapat"
+              >
+                ♥
+              </motion.button>
+            </div>
           </motion.div>
         </motion.div>
       )}

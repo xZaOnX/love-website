@@ -109,6 +109,29 @@ function App() {
             ↻ Sıfırla
           </motion.button>
 
+          <motion.button
+            key="test-surprise-button"
+            className="test-surprise-button"
+            onClick={() => setShowFinalSurprise(true)}
+            initial={{ opacity: 1 }}
+            whileHover={{ scale: 1.05 }}
+            style={{
+              position: 'fixed',
+              bottom: '20px',
+              right: '20px',
+              zIndex: 9999,
+              padding: '10px 20px',
+              backgroundColor: '#ff4d4d',
+              color: 'white',
+              border: 'none',
+              borderRadius: '20px',
+              cursor: 'pointer',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+            }}
+          >
+            🧪 Test Sürpriz
+          </motion.button>
+
           <motion.div
             className="cards-container"
             initial={{ opacity: 0 }}
@@ -142,6 +165,7 @@ function App() {
       <FinalSurprise
         isOpen={showFinalSurprise}
         onClose={handleCloseFinalSurprise}
+        onReset={handleReset}
       />
 
       <SecretLetter
