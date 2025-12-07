@@ -1,0 +1,151 @@
+.love-meter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.meter-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 3rem 2rem;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow:
+        0 20px 40px rgba(255, 77, 77, 0.2),
+        0 0 0 2px rgba(255, 255, 255, 0.8);
+    max-width: 450px;
+    width: 100%;
+    border: 1px solid rgba(255, 192, 203, 0.5);
+}
+
+.meter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #ff4d4d;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #ff4d4d 0%, #cc0000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.meter-display {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem;
+}
+
+.circular-chart {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 250px;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #ffe6e6;
+    stroke-width: 2.8;
+}
+
+.circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    stroke: #ff4d4d;
+    filter: drop-shadow(0 0 5px rgba(255, 77, 77, 0.5));
+}
+
+.percentage {
+    fill: #ff4d4d;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: 0.5em;
+    text-anchor: middle;
+}
+
+.center-heart {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: #ff4d4d;
+    pointer-events: none;
+}
+
+.message-container {
+    min-height: 80px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.love-message {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.3rem;
+    color: #333;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.measure-button {
+    background: linear-gradient(135deg, #ff4d4d 0%, #ff1a1a 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(255, 77, 77, 0.3);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.measure-button:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-family: 'Quicksand', sans-serif;
+    color: #ff4d4d;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+@media (max-width: 480px) {
+    .meter-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .meter-display {
+        width: 160px;
+        height: 160px;
+    }
+
+    .meter-title {
+        font-size: 2rem;
+    }
+}

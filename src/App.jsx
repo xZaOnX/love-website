@@ -6,11 +6,13 @@ import ProgressTracker from './components/ProgressTracker';
 import FloatingHearts from './components/FloatingHearts';
 import FinalSurprise from './components/FinalSurprise';
 import SecretLetter from './components/SecretLetter';
+import WelcomePage from './components/WelcomePage';
+import LoveMeter from './components/LoveMeter';
 import { reasons } from './data/reasons';
 import './App.css';
 
 function App() {
-  const [showLanding, setShowLanding] = useState(true);
+  const [currentView, setCurrentView] = useState('welcome'); // 'welcome', 'landing', 'game', 'loveMeter'
   const [revealedCards, setRevealedCards] = useState([]);
   const [showFinalSurprise, setShowFinalSurprise] = useState(false);
   const [showSecretLetter, setShowSecretLetter] = useState(false);
@@ -52,7 +54,7 @@ function App() {
   }, [clickSequence]);
 
   const handleStart = () => {
-    setShowLanding(false);
+    setCurrentView('game');
   };
 
   const handleCardReveal = (cardNumber) => {
@@ -76,68 +78,81 @@ function App() {
     setShowFinalSurprise(false);
     setClickSequence([]);
     setShowSecretLetter(false);
-    setShowLanding(true);
+    setCurrentView('landing');
   };
 
   // CUSTOMIZE THESE VALUES:
   const herName = "Aşkım"; // Her name here
   const yourName = "Senin Adın"; // Your name here
 
+  const renderContent = () => {
+    switch (currentView) {
+      case 'welcome':
+        return <WelcomePage onNavigate={setCurrentView} />;
+      case 'loveMeter':
+        return <LoveMeter onBack={() => setCurrentView('welcome')} />;
+      case 'landing':
+        return (
+          <LandingPage
+            onStart={handleStart}
+            herName={herName}
+            yourName={yourName}
+          />
+        );
+      case 'game':
+        return (
+          <>
+            <ProgressTracker revealed={revealedCards.length} total={100} />
+            <motion.button
+              key="reset-button"
+              className="reset-button"
+              onClick={handleReset}
+              initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              ↻ Sıfırla
+            </motion.button>
+
+            <motion.div
+              className="cards-container"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.h2
+                className="page-title"
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+              >
+                Seni Sevmemin 100 Nedeni
+              </motion.h2>
+
+              <div className="cards-grid">
+                {reasons.map((reason, index) => (
+                  <Card
+                    key={index + 1}
+                    number={index + 1}
+                    reason={reason}
+                    isRevealed={revealedCards.includes(index + 1)}
+                    onReveal={handleCardReveal}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </>
+        );
+      default:
+        return <WelcomePage onNavigate={setCurrentView} />;
+    }
+  };
+
   return (
     <div className="app">
       <FloatingHearts />
-
-      {showLanding ? (
-        <LandingPage
-          onStart={handleStart}
-          herName={herName}
-          yourName={yourName}
-        />
-      ) : (
-        <>
-          <ProgressTracker revealed={revealedCards.length} total={100} />
-
-          <motion.button
-            key="reset-button"
-            className="reset-button"
-            onClick={handleReset}
-            initial={{ opacity: 1, x: 0 }}
-            animate={{ opacity: 1, x: 0 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            ↻ Sıfırla
-          </motion.button>
-
-          <motion.div
-            className="cards-container"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.h2
-              className="page-title"
-              initial={{ y: -50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-            >
-              Seni Sevmemin 100 Nedeni
-            </motion.h2>
-
-            <div className="cards-grid">
-              {reasons.map((reason, index) => (
-                <Card
-                  key={index + 1}
-                  number={index + 1}
-                  reason={reason}
-                  isRevealed={revealedCards.includes(index + 1)}
-                  onReveal={handleCardReveal}
-                />
-              ))}
-            </div>
-          </motion.div>
-        </>
-      )}
+      {renderContent()}
 
       <FinalSurprise
         isOpen={showFinalSurprise}
