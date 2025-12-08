@@ -1,9 +1,39 @@
 import { motion } from 'framer-motion';
 import './LandingPage.css';
 
-const LandingPage = ({ onStart }) => {
+const LandingPage = ({ onStart, onBack }) => {
   return (
     <div className="landing-page">
+      <motion.button
+        className="back-button-landing"
+        onClick={onBack}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        style={{
+          position: 'absolute',
+          top: '20px',
+          left: '20px',
+          background: 'white',
+          border: 'none',
+          padding: '10px 20px',
+          borderRadius: '20px',
+          fontFamily: "'Quicksand', sans-serif",
+          color: 'var(--rose-gold)',
+          fontWeight: '600',
+          cursor: 'pointer',
+          boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '5px',
+          zIndex: 10
+        }}
+      >
+        ← Menü
+      </motion.button>
+
       <motion.div
         className="landing-content"
         initial={{ opacity: 0 }}

@@ -95,6 +95,7 @@ function App() {
         return (
           <LandingPage
             onStart={handleStart}
+            onBack={() => setCurrentView('welcome')}
             herName={herName}
             yourName={yourName}
           />
@@ -102,6 +103,35 @@ function App() {
       case 'game':
         return (
           <>
+            <motion.button
+              className="back-button-game"
+              onClick={() => setCurrentView('welcome')}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              style={{
+                position: 'fixed',
+                top: '20px',
+                left: '20px',
+                background: 'white',
+                border: 'none',
+                padding: '10px 20px',
+                borderRadius: '20px',
+                fontFamily: "'Quicksand', sans-serif",
+                color: '#b76e79',
+                fontWeight: '600',
+                cursor: 'pointer',
+                boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
+                zIndex: 100
+              }}
+            >
+              ← Menü
+            </motion.button>
+
             <ProgressTracker revealed={revealedCards.length} total={100} />
             <motion.button
               key="reset-button"
