@@ -84,6 +84,20 @@ const WelcomePage = ({ onNavigate }) => {
                             Aşk Ölçer
                             <span className="arrow">→</span>
                         </motion.button>
+
+                        <motion.button
+                            className="menu-button"
+                            onClick={() => onNavigate('quiz')}
+                            whileHover={{ scale: 1.02, x: 5 }}
+                            whileTap={{ scale: 0.98 }}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 2.4 }}
+                        >
+                            <span className="menu-icon">❓</span>
+                            Beni Ne Kadar Tanıyorsun?
+                            <span className="arrow">→</span>
+                        </motion.button>
                     </div>
                 </motion.div>
             </motion.div>

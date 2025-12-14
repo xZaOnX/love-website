@@ -8,11 +8,12 @@ import FinalSurprise from './components/FinalSurprise';
 import SecretLetter from './components/SecretLetter';
 import WelcomePage from './components/WelcomePage';
 import LoveMeter from './components/LoveMeter';
+import QuizAboutMe from './components/QuizAboutMe';
 import { reasons } from './data/reasons';
 import './App.css';
 
 function App() {
-  const [currentView, setCurrentView] = useState('welcome'); // 'welcome', 'landing', 'game', 'loveMeter'
+  const [currentView, setCurrentView] = useState('welcome'); // 'welcome', 'landing', 'game', 'loveMeter', 'quiz'
   const [revealedCards, setRevealedCards] = useState([]);
   const [showFinalSurprise, setShowFinalSurprise] = useState(false);
   const [showSecretLetter, setShowSecretLetter] = useState(false);
@@ -91,6 +92,8 @@ function App() {
         return <WelcomePage onNavigate={setCurrentView} />;
       case 'loveMeter':
         return <LoveMeter onBack={() => setCurrentView('welcome')} />;
+      case 'quiz':
+        return <QuizAboutMe onBack={() => setCurrentView('welcome')} />;
       case 'landing':
         return (
           <LandingPage
