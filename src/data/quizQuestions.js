@@ -15,7 +15,7 @@ export const quizQuestions = [
     id: 3,
     question: "Bir kafeye gitsek menüye bakmadan sipariş edeceğim içecek hangisidir?",
     options: ["İce Latte", "Kola", "İce Americano", "İce Tea"],
-    correctAnswer: 3
+    correctAnswer: 2
   },
   {
     id: 4,
